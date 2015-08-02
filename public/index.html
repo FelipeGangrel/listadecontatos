@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <title>Lista de contatos</title>
+  </head>
+  <body>
+    <div class="container" ng-controller="AppCtrl">
+      <h1>Lista de contatos</h1>
+      {{contato}}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Ação</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><button ng-click="cancelarEdicao()" class="btn btn-warning">Cancelar edição</button></td>
+            <td><input type="text" ng-model="contato.nome" class="form-control" /></td>
+            <td><input type="text" ng-model="contato.email" class="form-control" /></td>
+            <td><input type="text" ng-model="contato.telefone" class="form-control" /></td>
+            <td><button ng-click="adicionarContato(contato)" class="btn btn-primary ">Adicionar</button></td>
+            <td>
+              <button ng-click="atualizarContato()" class="btn btn-info ">Atualizar</button>
+            </td>
+          </tr>
+          <tr ng-repeat="contato in contactList">
+            <td>{{contato._id}}</td>
+            <td>{{contato.nome}}</td>
+            <td>{{contato.email}}</td>
+            <td>{{contato.telefone}}</td>
+            <td><button ng-click="removerContato(contato._id)" class="btn btn-danger">Remover</button></td>
+            <td><button ng-click="editarContato(contato._id)" class="btn btn-warning ">Editar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JQuery -->
+    <script src="libs/jquery/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap -->
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- AngularJs -->
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular/angular-messages.js"></script>
+    <!-- Angular Controllers -->
+    <script src="controllers/controller.js"></script>
+
+  </body>
+</html>
